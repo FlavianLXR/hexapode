@@ -1,0 +1,36 @@
+#include "_VERSION"
+
+#define MODIPMANAGER_TITLE			"ModipManager"
+#define	MODIPMANAGER_SHORTDESC		"Modbus Master over TCP/IP High Level Tool"
+
+#define MODIPMANAGER_COPYRIGHT		"(c)2014-2022 by Alain Menu"
+#define MODIPMANAGER_MAILTO			"alain.menu@ac-creteil.fr"
+
+/* ------------------------------------------------------------------------ */
+
+#define MODIPMANAGER_ABOUTMESSAGE	\
+	MODIPMANAGER_TITLE \
+	" - version " \
+	MODIPMANAGER_VERSION \
+	"\n" \
+	MODIPMANAGER_SHORTDESC \
+	"\nCopyright " \
+	MODIPMANAGER_COPYRIGHT \
+	" [" \
+	MODIPMANAGER_MAILTO \
+	"]\n"
+	
+#define MODIPMANAGER_ABOUTMESSAGE_HTML	\
+	"<p><h3>" \
+	MODIPMANAGER_TITLE \
+	" - version " \
+	MODIPMANAGER_VERSION \
+	"</h3><p>" \
+	MODIPMANAGER_SHORTDESC \
+	"<p>Copyright " \
+	MODIPMANAGER_COPYRIGHT \
+	" <a href=\"mailto:" \
+	MODIPMANAGER_MAILTO \
+	"\">" \
+	MODIPMANAGER_MAILTO \
+	"</a>"

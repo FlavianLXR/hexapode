@@ -1,0 +1,17 @@
+ModipManager
+
+v2.1	13/02/2016
+
+	source: version 2.0
+	ajout _VERSION, _ABOUT, _CHANGES
+	mise à jour entêtes de fichiers GPLv3
+
+	adaptations .pro pour nouvelle versions lib. QamSockets et QamModbusMap
+	
+	nouvelle localisation images pour fichier qrc
+	pbuLogo --> pbuAbout
+	
+v2.2	13/11/2016
+
+	ré-écriture fichier pro pour prise en compte pri de QamSockets et
+	de QamModbusMap
