@@ -8,7 +8,7 @@ bruit de l’air...).
 * Faire subir au pilote les effets de l’accélération, le tangage, le roulis et le lacet.  
 
 __Problématique :__  
-*Mettre en place le 3ème aspect d'un simulateur, la sensation de mouvement, à l'aide d'un hexapode (6 vérins sous le siège).*
+*Mettre en place le 3ème aspect sur un simulateur d'hélicoptère, la sensation de mouvement, à l'aide d'un hexapode (6 vérins sous le siège).*
 
 # Etudiants
 Killian LOPES\
