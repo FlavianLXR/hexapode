@@ -5,8 +5,7 @@ __Un simulateur doit posséder 3 aspects :__
 simulation  de  vol.  
 * La  sonorisation  reproduit  exactement  les  bruits  perçus  dans  le  cockpit  (bruit  de  moteur,  
 bruit de l’air...).  
-* Faire subir au pilote (Figure A3) les effets de 
-l’accélération.  
+* Faire subir au pilote les effets de l’accélération, le tangage, le roulis et le lacet.  
 
 __Problématique :__  
 *Mettre en place le 3ème aspect d'un simulateur, la sensation de mouvement, à l'aide d'un hexapode (6 vérins sous le siège).*
