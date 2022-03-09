@@ -1,0 +1,41 @@
+# fichier de configuration pour QamModbusMap
+#
+# update : 	02/12/2021 by AM
+#
+# project:	FlightSim Hexapod Animation
+
+HOST;127.0.0.1
+PORT;1025
+INFO;FLIGHTSIM HEXAPOD
+
+# 4xxxx - holding registers
+
+# hexapod current position
+
+40001;2;FFFF;	Tx;		Translation 0x (longitudinal), en mm;			Float;	0
+40003;2;FFFF;	Ty;		Translation 0y (latéral), en mm;			Float;	0
+40005;2;FFFF;	Tz;		Translation 0z (altitude), en mm;			Float;	0
+40007;2;FFFF;	Rx;		Rotation 0x (roulis), en degrés;			Float;	0
+40009;2;FFFF;	Ry;		Rotation 0y (tangage), en degrés;			Float;	0
+40011;2;FFFF;	Rz;		Rotation 0z (lacet), en degrés;				Float;	0
+
+# hexapod actuator lengths
+
+40101;1;FFFF;	L1;		Longueur vérin n°1, em mm ;					Int;	0
+40102;1;FFFF;	L2;		Longueur vérin n°2, em mm ;					Int;	0
+40103;1;FFFF;	L3;		Longueur vérin n°3, em mm ;					Int;	0
+40104;1;FFFF;	L4;		Longueur vérin n°4, em mm ;					Int;	0
+40105;1;FFFF;	L5;		Longueur vérin n°5, em mm ;					Int;	0
+40106;1;FFFF;	L6;		Longueur vérin n°6, em mm ;					Int;	0
+
+# hexapod template
+
+40201;1;FFFF;	baseRadius;	Rayon ancrages base, em mm ;			Int;	300
+40202;1;FFFF;	baseGap;	1/2 écart ancrages base, em mm ;		Int;	 60
+40203;1;FFFF;	topRadius;	Rayon ancrages platine, em mm ;			Int;	250
+40204;1;FFFF;	topGap;		1/2 écart ancrages platine, em mm ;		Int;	 40
+40205;1;FFFF;	minLen;		longueur min. (vérin rentré), em mm ;		Int;	280
+40206;1;FFFF;	maxLen;		longueur max. (vérin sorti), em mm ;		Int;	530
+40207;1;FFFF;	maxAngle;	angle absolu max. Rx,Ry,Rz, en degrés ;		Int;	 15
+40208;1;FFFF;	maxTrans;	déplacement abs. max. Tx,Ty, en mm ;		Int;	100
+40209;1;FFFF;	maxSpeed;	vitesse linéaire max., em mm/s ;		Int;	 30
