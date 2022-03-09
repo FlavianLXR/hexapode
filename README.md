@@ -12,7 +12,7 @@ __Problématique :__
 
 # Etudiants
 Killian LOPES\
-Flavian LAXENAIRE \
+Flavian LAXENAIRE (Chef d'équipe)\
 Aurélien FERREIRA \
 Yohann RAIMBAULT 
 
