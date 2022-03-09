@@ -2,7 +2,7 @@
 Projet BTS SNIR 2nd année
 
 # Etudiants
-Flavian LAXENAIRE
+Flavian LAXENAIRE \
 Killian LOPEZ
 Aurélien FERREIRA
 Yohann RAIMBAULT
