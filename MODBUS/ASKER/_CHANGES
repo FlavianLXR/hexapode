@@ -1,0 +1,18 @@
+ModipAsker
+
+v1.5	13/02/2016
+
+	alignement avec nouvelle version de QamModbusMap
+	source: version 1.4
+	ajout _VERSION, _ABOUT, _CHANGES
+	mise à jour entêtes de fichiers GPLv3
+
+	adaptations pour nouvelle version lib. QamSockets
+	QamUdpClient --> QamUdpSocket
+	
+	nouvelle localisation images pour fichier qrc
+	pbuLogo --> pbuAbout
+	
+v1.6	13/11/2016
+
+	ré-écriture fichier pro pour inclusion qamsockets.pri

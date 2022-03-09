@@ -1,0 +1,36 @@
+#include "_VERSION"
+
+#define MODIPASKER_TITLE			"ModipAsker"
+#define	MODIPASKER_SHORTDESC		"Modbus over IP Low Level Tool"
+
+#define MODIPASKER_COPYRIGHT		"(c)2014-2022 by Alain Menu"
+#define MODIPASKER_MAILTO			"alain.menu@ac-creteil.fr"
+
+/* ------------------------------------------------------------------------ */
+
+#define MODIPASKER_ABOUTMESSAGE	\
+	MODIPASKER_TITLE \
+	" - version " \
+	MODIPASKER_VERSION \
+	"\n" \
+	MODIPASKER_SHORTDESC \
+	"\nCopyright " \
+	MODIPASKER_COPYRIGHT \
+	" [" \
+	MODIPASKER_MAILTO \
+	"]\n"
+	
+#define MODIPASKER_ABOUTMESSAGE_HTML	\
+	"<p><h3>" \
+	MODIPASKER_TITLE \
+	" - version " \
+	MODIPASKER_VERSION \
+	"</h3><p>" \
+	MODIPASKER_SHORTDESC \
+	"<p>Copyright " \
+	MODIPASKER_COPYRIGHT \
+	" <a href=\"mailto:" \
+	MODIPASKER_MAILTO \
+	"\">" \
+	MODIPASKER_MAILTO \
+	"</a>"
