@@ -1,0 +1,36 @@
+#include "_VERSION"
+
+#define MODIPBUTLER_TITLE			"ModipButler"
+#define	MODIPBUTLER_SHORTDESC		"Modbus Slave over TCP/IP High Level Tool"
+
+#define MODIPBUTLER_COPYRIGHT		"(c)2014-2022 by Alain Menu"
+#define MODIPBUTLER_MAILTO			"alain.menu@ac-creteil.fr"
+
+/* ------------------------------------------------------------------------ */
+
+#define MODIPBUTLER_ABOUTMESSAGE	\
+	MODIPBUTLER_TITLE \
+	" - version " \
+	MODIPBUTLER_VERSION \
+	"\n" \
+	MODIPBUTLER_SHORTDESC \
+	"\nCopyright " \
+	MODIPBUTLER_COPYRIGHT \
+	" [" \
+	MODIPBUTLER_MAILTO \
+	"]\n"
+	
+#define MODIPBUTLER_ABOUTMESSAGE_HTML	\
+	"<p><h3>" \
+	MODIPBUTLER_TITLE \
+	" - version " \
+	MODIPBUTLER_VERSION \
+	"</h3><p>" \
+	MODIPBUTLER_SHORTDESC \
+	"<p>Copyright " \
+	MODIPBUTLER_COPYRIGHT \
+	" <a href=\"mailto:" \
+	MODIPBUTLER_MAILTO \
+	"\">" \
+	MODIPBUTLER_MAILTO \
+	"</a>"
