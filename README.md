@@ -1,5 +1,15 @@
 # Hexapode
-Projet BTS SNIR 2nd année
+Projet BTS SNIR 2nd année.  
+__Un simulateur doit posséder 3 aspects :__
+* Donner  une  vue  de  l’extérieur  qui  est  le  résultat  de  la  
+simulation  de  vol.  
+* La  sonorisation  reproduit  exactement  les  bruits  perçus  dans  le  cockpit  (bruit  de  moteur,  
+bruit de l’air...).  
+* Faire subir au pilote (Figure A3) les effets de 
+l’accélération.  
+
+__Problématique :__  
+*Mettre en place le 3ème aspect d'un simulateur, la sensation de mouvement, à l'aide d'un hexapode (6 vérins sous le siège).*
 
 # Etudiants
 Killian LOPES\
