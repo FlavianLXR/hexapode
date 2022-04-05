@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../../_res/icons/qam47.png</file>
+        <file>../../_res/icons/qam47.xpm</file>
+    </qresource>
+</RCC>

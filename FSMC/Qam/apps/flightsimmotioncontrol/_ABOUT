@@ -1,0 +1,36 @@
+#include "_VERSION"
+
+#define QAMSOCKETS_TITLE		"QamSockets"
+#define	QAMSOCKETS_SHORTDESC	"Qam UDP/TCP Sockets Library"
+
+#define QAMSOCKETS_COPYRIGHT	"(c)2006-2016 by Alain Menu"
+#define QAMSOCKETS_MAILTO		"alain.menu@ac-creteil.fr"
+
+/* ------------------------------------------------------------------------ */
+
+#define QAMSOCKETS_ABOUTMESSAGE	\
+	QAMSOCKETS_TITLE \
+	" - version " \
+	QAMSOCKETS_VERSION \
+	"\n" \
+	QAMSOCKETS_SHORTDESC \
+	"\nCopyright " \
+	QAMSOCKETS_COPYRIGHT \
+	" [" \
+	QAMSOCKETS_MAILTO \
+	"]\n"
+	
+#define QAMSOCKETS_ABOUTMESSAGE_HTML	\
+	"<p><h3>" \
+	QAMSOCKETS_TITLE \
+	" - version " \
+	QAMSOCKETS_VERSION \
+	"</h3><p>" \
+	QAMSOCKETS_SHORTDESC \
+	"<p>Copyright " \
+	QAMSOCKETS_COPYRIGHT \
+	" <a href=\"mailto:" \
+	QAMSOCKETS_MAILTO \
+	"\">" \
+	QAMSOCKETS_MAILTO \
+	"</a>"

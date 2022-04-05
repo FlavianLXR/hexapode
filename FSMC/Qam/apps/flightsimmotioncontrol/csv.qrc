@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>fsmockup.csv</file>
+    </qresource>
+</RCC>

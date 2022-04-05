@@ -1,0 +1,36 @@
+#include "_VERSION"
+
+#define FLIGHTSIMMOCKUP_TITLE			"FlightSim Mock-up"
+#define	FLIGHTSIMMOCKUP_SHORTDESC		"Scène 3D LLF Maquette éch. 1:1 FlightSim"
+
+#define FLIGHTSIMMOCKUP_COPYRIGHT		"(c)2017-2022 by Alain Menu"
+#define FLIGHTSIMMOCKUP_MAILTO			"alain.menu@ac-creteil.fr"
+
+/* ------------------------------------------------------------------------ */
+
+#define FLIGHTSIMMOCKUP_ABOUTMESSAGE	\
+	FLIGHTSIMMOCKUP_TITLE \
+	" - version " \
+	FLIGHTSIMMOCKUP_VERSION \
+	"\n" \
+	FLIGHTSIMMOCKUP_SHORTDESC \
+	"\nCopyright " \
+	FLIGHTSIMMOCKUPR_COPYRIGHT \
+	" [" \
+	FLIGHTSIMMOCKUP_MAILTO \
+	"]\n"
+	
+#define FLIGHTSIMMOCKUP_ABOUTMESSAGE_HTML	\
+	"<p><h3>" \
+	FLIGHTSIMMOCKUP_TITLE \
+	" - version " \
+	FLIGHTSIMMOCKUP_VERSION \
+	"</h3><p>" \
+	FLIGHTSIMMOCKUP_SHORTDESC \
+	"<p>Copyright " \
+	FLIGHTSIMMOCKUP_COPYRIGHT \
+	" <a href=\"mailto:" \
+	FLIGHTSIMMOCKUP_MAILTO \
+	"\">" \
+	FLIGHTSIMMOCKUP_MAILTO \
+	"</a>"
