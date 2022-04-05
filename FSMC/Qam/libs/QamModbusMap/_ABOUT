@@ -1,0 +1,36 @@
+#include "_VERSION"
+
+#define QAMMODBUSMAP_TITLE		"QamModbusMap"
+#define	QAMMODBUSMAP_SHORTDESC	"Qam high level manager/viewer for Modbus over IP cartography definition and uses"
+
+#define QAMMODBUSMAP_COPYRIGHT	"(c)2014-2016 by Alain Menu"
+#define QAMMODBUSMAP_MAILTO		"alain.menu@ac-creteil.fr"
+
+/* ------------------------------------------------------------------------ */
+
+#define QAMMODBUSMAP_ABOUTMESSAGE	\
+	QAMMODBUSMAP_TITLE \
+	" - version " \
+	QAMMODBUSMAP_VERSION \
+	"\n" \
+	QAMMODBUSMAP_SHORTDESC \
+	"\nCopyright " \
+	QAMMODBUSMAP_COPYRIGHT \
+	" [" \
+	QAMMODBUSMAP_MAILTO \
+	"]\n"
+	
+#define QAMMODBUSMAP_ABOUTMESSAGE_HTML	\
+	"<p><h3>" \
+	QAMMODBUSMAP_TITLE \
+	" - version " \
+	QAMMODBUSMAP_VERSION \
+	"</h3><p>" \
+	QAMMODBUSMAP_SHORTDESC \
+	"<p>Copyright " \
+	QAMMODBUSMAP_COPYRIGHT \
+	" <a href=\"mailto:" \
+	QAMMODBUSMAP_MAILTO \
+	"\">" \
+	QAMMODBUSMAP_MAILTO \
+	"</a>"

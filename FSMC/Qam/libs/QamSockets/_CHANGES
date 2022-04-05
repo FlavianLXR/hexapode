@@ -1,0 +1,66 @@
+QamSockets
+
+v3.0	18/12/2015
+
+	réunification des différentes versions utilisées
+	par SocketTool, Modip, XPlaneDatarefTester...
+		
+	source: version 2.x (modip)
+	ajout _VERSION, _ABOUT, _CHANGES
+	mise à jour des entêtes de fichiers GPLv3
+	ajout de QamTcpSocket / QamUdpSocket (fichiers à inclure)
+
+	QamUdpSocket : ajout méthode setRemoteHost() et slot privé lookupHost()
+	
+		07/01/2016
+		
+	QamUdpSocket : le signal sockReceive() devient sockReceived()
+	qamudpsocket.h : révision de la doc et ajout d'un exemple
+	
+	QamTcpClient : le signal sockReceive() devient sockReceived()
+	
+	QamAbstractServer : responseToRequest() devient un slot
+						ajout des signaux received(), sent(), info()
+						implémentation par défaut de responseToRequest()
+						implémentation par défaut de response()
+						implémentation par défaut de networkInfo()
+						
+		11/01/2016
+		
+	QamAbstractServer::responseToRequest() déclarée obsolète
+	-> dupliquée en responseToClientRequest()
+	
+	QamAbstractServer::response() déclarée obsolète
+	-> dupliquée en responseFromServer()
+	
+	QamTcpConnection::readyRead()
+	QamTcpClient::QamTcpClient()
+	modifiés en conséquence
+
+		19/02/2016
+		
+	ajout processus d'attente de la résolution effective d'adresse
+	pour QamUdpSocket::setRemoteHost() qui peut donc maintenant être bloquante...
+
+		21/02/2016
+		
+	QamUdpSocket: ajout sélecteurs address() et port()
+	
+v3.1	18/03/2016
+
+	ajout argument port à sockWrite()
+
+v3.2	27/04/2016
+
+	ajout _README et .pro pour fabrication lib
+	inclusion de libs/libinstall.pri
+
+v3.21	13/06/2016
+		
+	nouveau fichier qamsockets.pri
+	à inclure dans programme client...
+	
+v3.3	09/02/2022
+		
+	update Qt 6.2.2
+	QamTcpClient: signal error() --> errorOccurred()

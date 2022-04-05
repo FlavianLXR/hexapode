@@ -1,0 +1,59 @@
+QamWidgets version 4.x - (c)2004-2016 by Alain Menu
+===============================================================================
+
+pré-requis : Qt Framework version >= 5.0
+
+[user] indique que les droits utilisateurs sont suffisants
+[root] indique que les droits super-utilisateur sont requis
+		( sous Windows, ouvrir un terminal en tant qu'admin. :-) )
+
+Création/installation de la collection de widgets
+-------------------------------------------------
+
+[user] se placer dans le répertoire QamWidgets
+[user] qmake [CONFIG+=dylib] (*)
+[user] make
+[root] make install
+
+(*) la version par défaut sous MacOSX est .framework
+
+Résultats après installation (cf. 'qmake -query')
+----------------------------
+
+L/M/W 	Qt headers:					$$[QT_INSTALL_HEADERS]/Qam/
+L/M 	standard location headers:	/usr/include/Qam/
+L		shared object (*.so):		$$[QT_INSTALL_LIBS]/ ; /usr/local/lib/
+M		dynamic lib (*.dylib):		$$[QT_INSTALL_IMPORTS]/Qam/ ; /usr/local/lib/
+M		framework (*.framework):	$$[QT_INSTALL_LIBS]/ ; /Library/Frameworks/
+W 		dynamic lib (*.dll):		$$[QT_INSTALL_BINS]/
+W 		static lib (*.a):			$$[QT_INSTALL_LIBS]/
+
+(L:Linux M:MacOSX W:Windows)
+
+Pour exploiter la collection QamWidgets dans une application...
+---------------------------------------------------------------
+
+dans le source :    #include <QamLed>
+					#include <QamAnalogMeter>
+					... ...
+
+dans le .pro   :    INCLUDEPATH += $$[QT_INSTALL_HEADERS]/Qam
+                    LIBS 	    += -L/usr/local/lib -lQamWidgets
+                 ou	LIBS		+= -framework QamWidgets
+
+Création des Designer plugins
+-----------------------------
+
+[user] se placer dans le répertoire QamWidgets/plugins
+[user] qmake
+[user] make
+[root] make install
+
+Intégration à Qt Designer
+-------------------------
+
+[user] designer&
+       --> Aide | à propos des plugins...
+       --> le nouveau plugin 'qamwidgetplugins' doit apparaître dans la liste
+       --> les widgets sont disponibles dans la palette, rubrique 'Qam Widgets'
+

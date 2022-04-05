@@ -1,0 +1,37 @@
+QamModbusMap
+
+v1.5	13/02/2016
+
+	source: version 1.4 (modip_140306)
+	ajout _VERSION, _ABOUT, _CHANGES
+	
+	classes : QamModbusMap, QamModbusMapViewer, QamModbusData, QamModbusDataItem
+	
+	mise à jour des entêtes de fichiers GPLv3
+	
+	ajout inclusion de _ABOUT
+	mise à jour QamModbusMap::version()
+	
+	modif. chemin inclusion "qamabstractserver.h"
+	
+	héritage de QamAbstractServer :
+	responseToRequest() --> responseToClientRequest()
+	response() --> responseFromServer() ;
+	
+	nouveau fichier à inclure QamModbusMap
+
+v1.51	13/06/2016
+
+	nouveau fichier qammodbusmap.pri
+	à inclure dans fichier projet du programme client...
+	
+v2.0	06/07/2021
+
+    wireshark --> une trame tcp peut contenir plusieurs trames MBAP-PDU ...
+	actuellement cela provoque une sortie avec le message précédent ("invalid MBAP Length") !
+	et la première trame n'est pas traitée...
+	correction --> responseToClientRequest() : maintenant récursive !
+
+v2.1	18/01/2022 --> Qt v6.2.2
+
+    QamModbusMap::loadMap() : QTextStream::setCodec() obsolète, remplacé par setEncoding()

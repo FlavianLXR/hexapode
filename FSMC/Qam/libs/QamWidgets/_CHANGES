@@ -1,0 +1,108 @@
+QamWidgets
+
+v4.7	25/04/2016
+
+	source: version 4.6 (Qt 4.8.4)
+	ajout _VERSION, _ABOUT, _CHANGES, _README
+	mise à jour des entêtes de fichiers GPLv3
+
+	remplacement de : 	#include <QtDesigner/QDesignerExportWidget>
+	par :				#include <QtUiPlugin/QDesignerExportWidget>
+
+	suppression des méthodes statiques version() propres à chaque classe
+	
+	+ QamWidget
+		+ QamAbstractDigital
+			- QamLed
+			- QamSegmentDisplay
+			+ QamBargraph
+				- QamDigitalGauge
+			+ QamDigitalMeter
+				- QamChronoMeter
+		+ QamAbstractAnalog
+			- QamAnalogMeter
+			- QamGauge
+			- QamPotentioMeter
+
+		26/04/2016
+					
+	qamwidgets.pro : révision des cibles INSTALL
+
+		27/04/2016
+					
+	création/inclusion de libs/libinstall.pri
+	pour mutualisation des cibles d'installation des libs
+		
+		02/05/2016
+		
+	qamgauge.cpp : correction calculs zones et position aiguille
+
+		09/04/2016
+		
+	plugins : création nouvelle classe de base QamWidgetPlugin
+	pour mutualisation des parties communes des Qam...Plugin initiales
+	-> chaque widget plugin se réduit à un .h avec 3 méthodes inline...
+	
+	adaptation pour nouveau procédé Qt5 	-> macro Q_PLUGIN_METADATA
+											-> nouveau fichier qamwidgets.json
+	
+	MacOSX : modif. spéciales dans libs/libinstall.pri et qamwidgetplugins.pro
+	pour installation framework et plugin dans Qt Creator
+	
+v4.8	20/10/2017
+
+	ajout de qamled.pri pour permettre de lier uniquement le widget led
+	dans un projet logiciel...
+	
+v4.9	15/12/2017
+
+	nouveau qamgauge.pri : 		QamLed + QamGauge
+		qamwidgets.pri :	collection complète
+
+v5.0	07/02/2018
+
+	suite à tests d'intégration QamWidgets dans UI QtQuick :
+	- ajout méthode virtuelle pure drawForeground()
+	- ajout méthode publique draw()
+	- remontée paintEvent() dans classe de base
+
+	à partir du paint() d'une classe dérivée de QQuickPaintedItem,
+	un custom widget peut être complétmeent dessiné en invoquant 
+	sa méthode publique draw() qui appelle drawBackground() et drawForeground()
+
+	+ QamWidget
+		+ QamAbstractDigital		*
+			- QamLed				*
+			- QamSegmentDisplay		*
+			+ QamBargraph			*
+				- QamDigitalGauge	*
+			+ QamDigitalMeter		*
+				- QamChronoMeter	*
+		+ QamAbstractAnalog			*
+			- QamAnalogMeter		*
+			- QamGauge				*
+			- QamPotentioMeter		*
+
+	Note: 	QamBarGraph et QamDigitalMeter sont des assemblages (layout) de
+			custom widgets, la méthode draw() ne fonctionne pas via paint() de
+			QQuickPaintedItem
+
+		08/02/2018
+
+	QamAbstractAnalog : nouvelles méthodes setThresholds(), setRange()
+
+V5.1	15/06/2021
+
+	QamDigitalMeter : ajout propriété leadingZeros
+	(affichage O/N des zéros non significatifs à gauche)
+	
+	QamSegmentDisplay::setCustomDisplay() :
+	modif. pour possibilité affichage aucun segment...
+	
+
+v5.2	19/01/2022
+
+	corrections diverses pour upgrade Qt 6.2.2
+	--> QamLed, QamSegmentDisplay, QamDigitalMeter (+ parents)
+	autres branches à tester...
+	

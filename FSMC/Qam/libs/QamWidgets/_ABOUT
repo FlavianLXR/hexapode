@@ -1,0 +1,36 @@
+#include "_VERSION"
+
+#define QAMWIDGETS_TITLE		"QamWidgets"
+#define	QAMWIDGETS_SHORTDESC	"Qam Custom Widgets Collection"
+
+#define QAMWIDGETS_COPYRIGHT	"(c)2004-2022 by Alain Menu"
+#define QAMWIDGETS_MAILTO		"alain.menu@ac-creteil.fr"
+
+/* ------------------------------------------------------------------------ */
+
+#define QAMWIDGETS_ABOUTMESSAGE	\
+	QAMWIDGETS_TITLE \
+	" - version " \
+	QAMWIDGETS_VERSION \
+	"\n" \
+	QAMWIDGETS_SHORTDESC \
+	"\nCopyright " \
+	QAMWIDGETS_COPYRIGHT \
+	" [" \
+	QAMWIDGETS_MAILTO \
+	"]\n"
+	
+#define QAMWIDGETS_ABOUTMESSAGE_HTML	\
+	"<p><h3>" \
+	QAMWIDGETS_TITLE \
+	" - version " \
+	QAMWIDGETS_VERSION \
+	"</h3><p>" \
+	QAMWIDGETS_SHORTDESC \
+	"<p>Copyright " \
+	QAMWIDGETS_COPYRIGHT \
+	" <a href=\"mailto:" \
+	QAMWIDGETS_MAILTO \
+	"\">" \
+	QAMWIDGETS_MAILTO \
+	"</a>"
