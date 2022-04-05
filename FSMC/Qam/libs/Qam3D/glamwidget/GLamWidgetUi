@@ -1,0 +1,3 @@
+#include "glamscene.h"
+#include "glamwidget.h"
+#include "glamwidgetui.h"
