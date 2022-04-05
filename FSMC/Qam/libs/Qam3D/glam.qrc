@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/teapot.obj</file>
+        <file>res/suzanne.stl</file>
+        <file>res/cube.raw</file>
+        <file>res/Arial.ttf</file>
+        <file>shaders/fragment.glsl</file>
+        <file>shaders/vertex.glsl</file>
+        <file>res/glam_logo.png</file>
+    </qresource>
+</RCC>

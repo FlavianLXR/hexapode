@@ -1,0 +1,430 @@
+Qam3D
+
+v0.8	05/09/2016
+
+	source: GLam version 0.7 
+	(dernière version Qt/shaders de GLam, Devel/Qt5.4/GLamTester-0.2, juillet 2015)
+	
+	ajout _VERSION, _ABOUT, _CHANGES
+	mise à jour des entêtes de fichiers GPLv3
+
+	état de l'art version 0.7 Qt/shaders
+	
+	Scène 3D :		GlamWidget, widget "scène 3D"
+					GLamScene, paramètres courant d'une scène 3D
+					GLamWidgetUi, interface de pilotage d'une scène 3D
+				
+	Objets 3D :		GLamObject, classe de base abstraite
+					> GLamGrid
+					> GLamPrism
+						> GLamCube
+					> GLamRevolution
+						> GLamVector
+						> GLamCylinder
+						> GLamPipe
+						> GLamSphere
+						> GLamTorus
+					> GLamSolid
+					> GLamHole
+					> GLamProfile
+					> GLamGroup
+						> GLamCSG
+					> GLamGear
+						> GLamHelicalGear
+	
+	Ressources :	GLamPolygon, utilisé par les classes (méthode polygons() pour GLamCSG...)
+					GLamRoundedPolygon, obsolète ???
+					GLam2D, ressources de manipulations formes 2D
+					GLamMaterial, matériau d'un objet 3D (couleur, réflexion ADS, ...)
+					libcsg/, utilisés par GLamCSG
+					libtess/, interfacée par glamobject.h
+					shaders/, vertex.glsl et fragment.glsl chargés par constructeur GLamObject
+					
+	nouvelle arborescence : 	glamwidget/ glamtools/ glamobjects/ glamobjects/mechanical/
+	fichier projet à inclure :	glam.pri
+	
+	
+	TODO:			examples/
+						Spool, Graal, Wheel
+						CSG operators, Thingy, Dice
+						Gears (avec animation)
+						Gripper (avec animation)
+						WbWheel (dérivée de GLamGroup), objet complexe...
+
+
+	TODO: 			reprise des classes Wire/Curve3D, Nut, Screw, ThreadRot, Spring
+					(cf. Devel/GLam-0.4 et Devel/GLam-devel)
+					
+		06/09/2016
+
+	modif. fragment.glsl pour ajout clause 'precision' nécessaire sur iOS
+
+		07/09/2016
+
+	correction des warnings 'libtess' (ajout macro UNUSED(),...)
+
+		09/09/2016
+
+	création nouvelle branche ./examples
+	ajout fichier glamexamples.pri
+
+		13/09/2016
+
+	Dice plante quand trop de vertices...
+	TODO: constante GLAMDEBUG pour trace alloc mem,...
+
+		14/09/2016
+
+	nouvelle classe GLamCurve dans glamobjects/
+	enveloppe 3D définie par liste de points
+	section définie par liste de points 2D dans le plan 0XY
+	fermeture des extrémités par tesselation pour autoriser des sections
+	convexes/concaves
+
+		15/09/2016
+
+	nouvelle classe GLamWire dans glamobjects/mechanical
+	spécialisation de GLamCurve, enveloppes 3D de types Bézier/BSpline
+
+		24/09/2016
+
+	ré-écriture classe GLamSpring, plus rapide
+	dérive maintenant de GLamCurve directement
+
+		15/10/2016
+
+	classe GLamWidget : ajout propriété paintOverEnabled
+
+		16/10/2016
+		
+	erreur libtess 100156 = GLU_TESS_NEED_COMBINE_CALLBACK
+	cf. libtess/README
+	-> glamobject.cpp : nouveau callback
+		installation : glamTessNew()
+		implémentation : _combineCallback()
+
+		17/10/2016
+		
+	révision du fichier glam.pri pour prise en compte d'options
+	passées via CONFIG du pro client
+
+	par défaut, glam.pri prend en compte la lib complète...
+	
+	NO_GLamWidgetUi : pas d'interface de pilotage glamwidget/glamwidgetui.*
+	NO_GLamGroup : sans glamobjects/glamgroup.* ni glamobjects/glamcsg.*
+	NO_GLamMechanical : ne prend pas en compte la branche glamobjects/mechanical/
+
+	
+		21/11/2016
+		
+	TODO : export STL (binaire), cf. http://www.fabbers.com/tech/STL_Format
+
+		   les données sont dans m_vertices et m_normals de GLamObject !
+		   
+		   Attention : 
+		   "STL coordinates must be positive numbers"
+		   "The object represented must be located in the all-positive octant. 
+		    In other words, all vertex coordinates must be positive-definite 
+		    (nonnegative and nonzero) numbers."
+		   
+		   --> GLamObject::exportToStl() ???
+		   --> classe GLamStL ???
+
+v0.81	26/11/2016
+
+	nouvelle classe GLamStL (branche glamobjects)
+	màj: _VERSION, glam.pri, GLamObjects
+
+		30/11/2016
+
+	ajout ressource cube.stl pour construction par défaut
+
+		01/12/2016
+
+	GLamStL amie de GLamObject pour pouvoir invoquer update()
+	et ainsi alimenter la liste des vertices sans passer par draw()...
+
+	essai avec objet Graal <- GLamRevolution <- GLamObject : ok
+	essai avec objet Thingy <- GLamCSG <- GLamGroup <- GLamObject : ok
+
+		14/12/2016
+
+	intégration de GLamStL dans option GLamGroup
+
+		15/12/2016
+
+	nouvelle classe GLamObjMtl dans option GLamGroup
+
+		16/12/2016
+
+	test avec GLamObject concrète pour remplissage direct à partir
+	des 'g' (groupe de facettes) du format OBJ -> NON
+
+	nouvelle piste : nouvelle classe de concrétisation bas niveau de
+	GLamObject <-- GLamMesh
+	construction/manipulation d'un objet par accès direct à la liste
+	des triangles...
+
+		21/12/2016
+
+	GLamMesh ok, vue "maillage triangulaire" de GLamObject sans
+	atribut supplémentaire...
+	ajout de l'import/export format RAW
+	nouvelle méthode --> GLamMesh& GLamObject::toTrimesh()
+
+		22/12/2016
+
+	ajout d'un système de remontée de messages en provenance des
+	objets de la hiérarchie GLamObject (4 niveaux)
+	méthode publique surchargeable GLamWidget::messageFromObjects()
+	par défaut, émission du signal message(QString)
+
+	ce signal peut être connecté sur GLamWidgetUi::addComment()...
+
+	enveloppe objet: ajout min(), max() et dim() dans classe GLamObject
+	surcharge min() et max() dans GLamGroup
+
+v0.82	12/01/2017
+
+	tests de prise en charge des textures (quand chargement OBJ/MTL)
+	-> adaptation des shaders
+	-> nouveaux attributs dans GLamObject : m_texels, m_texelAttr
+	pour la transparence, il faut agir sur gl_FragColor.a dans fragment.glsl
+
+		15/01/2017
+
+	texture maintenue par GLamMaterial, initialisée par lecture MTL
+	bind()/release() dans GLamObject::draw()
+	-> pb si tentative de delete m_texture dans destructeur GLamMaterial
+
+	diminution/suppression des doublons dans GLamObject::m_normals :
+	--> GLamObject::m_vertices devient un vecteur de QVector4D
+		les champs x,y,z représentent le vertex,
+		et le champ w représente l'indice de la normale à prendre
+		dans le vecteur GLamObject::m_normals...
+
+v0.83	29/01/2017
+
+	nouveau codage interne des vertices/normales/texels (encore!)
+
+	vertices (3 par triangle):
+		--> GLamObject::m_vertices : liste sans doublons (QVector3D)
+		--> GLamObject::m_iVertex :  liste d'indices (int)
+	
+	normales (la même pour les 3 sommets d'un triangle) :
+		--> GLamObject::m_flatNormals : liste sans doublons  (QVector3D)
+		--> GLamObject::m_iFlatNormal : liste d'indices (int)
+	
+	texels (1 par vertex):
+		--> GLamObject::m_texels : liste sans doublons (QVector2D)
+		--> GLamObject::m_iTexel : liste d'indices (int)
+
+	+ méthodes privées associées :
+		int addVertex(QVector3D vertex ) ;
+		int addNormal(QVector3D normal ) ;
+		int addTexel(QVector2D texel ) ;
+
+	normales pour modes 'smooth shading' (1 par vertex) :
+		--> GLamObject::m_smoothNormals : liste sans doublons  (QVector3D)
+		--> GLamObject::m_iSmoothNormal : liste d'indices (int)
+	
+	la normale 'smooth' d'un vertex est la moyenne des normales des facettes
+	triangulaires auxquelles appartient le vertex...
+	les calculs sont effectués dans GLamObject::update()
+	
+	+ nouveau type public :
+		enum  ShadingEffect{ Flat, Gouraud, Phong, Toon } ;
+	+ nouvelle propriété :
+		ShadingEffect m_shadingEffect + get/set
+	+ surcharge dans GLamGroup
+
+	nouvelles versions GLSL (vertrx.glsl et fragment.glsl)
+
+		01/02/2017
+
+	ajout GlamRevolution::setTexture()
+	ajout GLamOBject::triTex() et GLamOBject::quadTex()
+	
+	pb. texturage d'un quad déformé quand scission en 2 triangles
+	--> limitation de la déformation en ajoutant un vertex central
+		(1 quad --> 4 triangles)
+	--> compilation conditionnelle TEXTUREDQUADTO4TRIANGLES
+	note: GL_QUADS non dispo. sous OpenGLES
+	
+		02/02/2017
+
+	nouvelles ressources intégrées (qrc) :
+	cube.raw :    chargé par GLamMesh::load() si fichier spécifié non trouvé
+	suzanne.stl : 'Blender monkey', chargé par constructeur par défaut GLamStL
+	teapot.obj :  'Utah Teapot', chargé par constructeur par défaut GLamOBjMtl
+	
+		07/02/2017
+
+	nouvelle ressource GLam2D::isClockWise()
+
+		10/02/2017
+
+	mode WireFrame + GLamMesh = bug !
+	--> mode WireFrame maintenant traité au niveau GLamObject::update()
+	--> nouveau QOpenGLBuffer pour les indices
+	--> glDrawArrays() remplacé par glDrawElements()
+
+	pb: les quads sont montrés par 2 triangles en mode filaire !
+	--> nouvelle version triangle() et quad()
+
+	ajout membre statique numTriangles()
+	correction m_isDrawing pour tenir compte du cas
+	'même objet dessiné plusieurs fois'
+
+		12/02/2017
+
+	tests d'intégration de Poly2Tri:
+	"Fast and Robust Simple Polygon Triangulation With/Without Holes
+	by Sweep Line Algorithm" by Wu Liang
+	http://sites-final.uclouvain.be/mema/Poly2Tri/poly2tri.html
+
+	--> répertoire provisoire 'libtess2'
+			classes TessPoint, TessLine, TessPolygon
+			+ tessdefs.h (STL)
+			+ predicate.cc
+	--> 3 nouvelles méthodes dans GLamObject :
+			glamTessPolygon()
+			glamTessHole()
+			glamTessTriangulate()
+
+	--> test dans GLamSolid, nouvelle écriture de create()
+			createFrontFace() et createBackFace() obsolètes
+
+
+		22/02/2017
+
+	adaptation de GLamRevolution et GLamProfile pour 'libtess2'
+
+	création nouvelle classe GLamText
+
+		08/11/2017
+
+	nouveau signal GlamWidget::initialized()
+	émission quand l'appel à createObjects() est fait...
+
+		10/11/2017
+
+	révision classe GlamCurve: remplacement usage de libtess
+	par libtess2
+	(compilation conditionnelle USE_LIBTESS, cf. glam.pri)
+
+		12/11/2017
+
+	nouvelle amie de GLamObject = GLamMesh
+	nouvelles méthodes GLamObject::vertex(), GLamObject::numVertexIndices()
+	pour pouvoir privatiser les attributs protégés...
+
+	modif. de GLamHole et GLamSolid (non amies) en conséquence
+
+		13/11/2017
+
+	nouvelle méthode privée setDim() pour màj m_min et m_max
+	(calcul systématique dans update() supprimé...)
+
+		22/11/2017
+
+	GLamWidget: nouvel attribut m_projectionChanged pour gestion appel
+	resizeGL() que quand nécessaire et pas systématiquement...
+
+	GLamWidget::m_modelViewMatrix renommé en viewMatrix
+	(Model Matrix est en réalité le produit de GLamObject::defaultMatrix et
+	de GLamObject::transformMatrix)
+
+		27/11/2017
+
+	L'appel à deleteObjects() depuis le destructeur de GLamWidget
+	n'invoque pas la surcharge de la classe dérivée...
+	faut-il supprimer deleteObjects() du modèle de dév ?
+	et laisser à charge au destructeur de la classe dérivée de détruire
+	ses objets ?
+	--> oui
+
+	réhabilitation de la propriété size de GLamScene.
+	le POV est contrôlable entièrement depuis la classe dérivée
+	de GLamWidget grâce à son accesseur scene().
+
+		02/12/2017
+
+	tests de construction étendus d'objets GLamObjMtl à l'occasion
+	de la rédaction de la doc Doxygen.
+	GLamObjMtl est un parfait GLamGroup, les attributs privés de GLamOBjMtl
+	ne servent qu'en phase de lecture des fichiers OBJ/MTL.
+
+
+		10/01/2018
+
+	modif. glam.pri pour prise en compte option GLamGluTess et définition
+	de la constante USE_GLULIBTESS à la place de USE_LIBTESS
+
+	par défaut, c'est la version Poly2Tri qui est utilisée
+
+	réhabilitation de GLU libtess pour GLamSolid…
+
+		08/02/2018
+		
+	modif. libtess2/splay.h ligne 359 : assert(false); remplacé par res=root;
+
+		19/02/2018
+
+	GLamWidget : nouvelles méthodes publiques pour utilisation
+	via classe dérivée de QQuickItem (interface utilisateur QML)
+	-> initPaint(), resizePaint() et paint()
+
+		22/02/2018
+
+	GlamWidget::setTRanslateFlags() -> nouvel argument offs
+
+v0.84	13/04/2018
+
+	GlamMesh constructeur de copie : 
+	conservation du nom de classe -> possibilité d'ajouter un GLamStl dans un
+	GLamGroup en passant par convertisseur GLamObject::toTriMesh()...
+	
+v0.85	22/05/2018
+
+	nouvelles versions vertex.glsl et fragment.glsl avec clause __VERSION__
+	constructeur de GLamObject adapté en conséquence
+	
+		30/05/2018
+
+	glamwidget.cpp: ajout version GLSL dans paintOver()
+
+v0.9	01/06/2018
+
+	nouvelle classe GLamXplaneObj, amie de GLamObject
+	pour import/export de fichiers Laminar Research XPlane OBJ8
+
+v0.9	25/11/2020
+
+	reprise du projet...
+	objectif premier : mise à jour de la documentation
+	
+        04/12/2020
+
+    nouvelle classe glamtools/glamlogo
+
+        08/12/2020
+
+    correction GLamSolid::create() et GLamSolid::createEdgeFace() dans le cas
+    d'un 'hole' avec décalage d'origine
+
+v0.91   09/12/2020
+
+    GLamObject : ajout classe Qam3D pour méthode statique version()
+    GLamText : gestion locale du material pour permettre concaténation de
+    texte colorée...
+
+v0.92	07/12/2021
+
+    nouveau signal resetPessed() pour permettre choix position par défaut autre
+	que Rx = Ry= Rz = 0, par appel à GLamWidget::scene().setRotation(...)
+
+		06/01/2022
+		
+	modif. glam.pri pour rendre glamlogo dépendant de config !NO_GLamGroup
+	

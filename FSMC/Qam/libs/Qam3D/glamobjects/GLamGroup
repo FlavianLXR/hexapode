@@ -1,0 +1,6 @@
+#include "glamcsg.h"
+#include "glamgroup.h"
+#include "glamtext.h"
+#include "glamstl.h"
+#include "glamobjmtl.h"
+#include "glamxplaneobj.h"

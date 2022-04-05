@@ -1,0 +1,36 @@
+#include "_VERSION"
+
+#define QAM3D_TITLE			"Qam3D"
+#define	QAM3D_SHORTDESC		"Qam OpenGL ES Collection (GLam)"
+
+#define QAM3D_COPYRIGHT		"(c)2009-2022 by Alain Menu"
+#define QAM3D_MAILTO		"alain.menu@ac-creteil.fr"
+
+/* ------------------------------------------------------------------------ */
+
+#define QAM3D_ABOUTMESSAGE	\
+	QAM3D_TITLE \
+	" - version " \
+	QAM3D_VERSION \
+	"\n" \
+	QAM3D_SHORTDESC \
+	"\nCopyright " \
+	QAM3D_COPYRIGHT \
+	" [" \
+	QAM3D_MAILTO \
+	"]\n"
+	
+#define QAM3D_ABOUTMESSAGE_HTML	\
+	"<p><h3>" \
+	QAM3D_TITLE \
+	" - version " \
+	QAM3D_VERSION \
+	"</h3><p>" \
+	QAM3D_SHORTDESC \
+	"<p>Copyright " \
+	QAM3D_COPYRIGHT \
+	" <a href=\"mailto:" \
+	QAM3D_MAILTO \
+	"\">" \
+	QAM3D_MAILTO \
+	"</a>"
