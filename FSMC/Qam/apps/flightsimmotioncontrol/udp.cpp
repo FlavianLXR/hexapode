@@ -18,7 +18,7 @@ UDP::UDP(QWidget *parent)
     timer = new QTimer();
     timer->start(100);
 
-    //QTimer::connect(timer , SIGNAL(timeout()),this,SLOT(disconnected()));
+    QTimer::connect(timer , SIGNAL(timeout()),this,SLOT(disconnected()));
 
     connect(socket, SIGNAL(readyRead()), this, SLOT(traitementDatagram()),Qt::QueuedConnection);
 
