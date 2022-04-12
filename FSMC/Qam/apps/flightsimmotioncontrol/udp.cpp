@@ -34,7 +34,7 @@ void UDP::disconnected()
 }
 void UDP::envoieDatagram()
 {
-    QByteArray RPOS = "RPOS010"; //datagrams pour position , envoye a 10Hz
+    QByteArray RPOS = "RPOS050"; //datagrams pour position , envoye a 50Hz
 
     socket->writeDatagram(RPOS.data(),RPOS.size(),QHostAddress("192.168.0.103"),49000);//envoie demande de datagramme RPOS a Xplane
 
