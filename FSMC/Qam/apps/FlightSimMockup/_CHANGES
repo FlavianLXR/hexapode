@@ -1,0 +1,142 @@
+FlightSimMockup
+
+v0.1	19/09/2017
+
+
+	objectif :  modélisation 3D maquette échelle 1:1 SA316B
+				pour étude de mobilité tangage/roulis +- 10° 
+
+v0.2	27/09/2017
+
+	modélisation d'un hexapode avec 6 degrés de liberté
+
+		29/09/2017
+
+	modif. de l'IHM pour contrôle en live de la géométrie
+	via spin boxes
+	animation roulis/tangage/lacet avec choix de vitesse linéaire max.
+	des actuateurs
+
+		03/10/2017
+
+	correction position initiale à mi-course des vérins
+	(calcule l'altitude de la platine d'ancrage mobile)
+
+v0.3	06/10/2017
+
+	test implémentation MGD avec Jacobienne et compagnie...
+	création de la lib Qam3Dof...
+
+		18/10/2017
+
+	origine sur pivot virtuel (centre de la platine mobile)
+
+	MGI :	UI --> modif. m_vKin [Tx,Ty,Tz,Rx,Ry,Rz]
+			m_vKin --> m_mKin, m_mKin2 = m_mKin
+			m_mKin --> m_pAnc (points d'ancrage platine mobile)
+			m_mKin --> m_vLen (longueur des vérins)
+
+	MGD :	UI --> modif. len (copie de m_vLen)
+			len , m_vKin --> m_vKin (Newton-Raphson)
+			m_vKin --> m_mKin
+			m_vKin --> m_mKin2, m_vKin
+			m_mKin --> m_pAnc (points d'ancrage platine mobile)
+			m_mKin --> m_vLen (longueur des vérins)
+
+	draw:	m_mKin  --> ancrages/longueurs des vérins
+			m_mKin2 --> positionnement spatial de la maquette
+
+		04/11/2017
+
+	création classe FSmuFrame (support mécano-soudé)
+
+v0.4	08/11/2017
+
+	classes séparées Hexapod / HexapodConfigurator
+
+v0.5	24/04/2020
+
+	nouvelle méthode setAngles()
+	en prévision interface avec XPlane (non testée...)
+	
+v0.6	13/10/2021
+
+    tests sur maquette réelle avec 6 vérins électriques
+	
+	TODO : modif. IHM pour pouvoir sélectionner des valeurs d'angles
+	       et récupérer les longueurs des vérins correspondantes
+	       
+	       la modification des angles est déjà possible à partir du
+	       clavier...
+	       ajouter export type CSV vers clipboard ?
+	       format = roll;pitch;yaw;l1;l2;l3;l4;l5;l6
+
+        14/10/2021
+
+    MainWindow : nouveau bouton m_btnExport "Export current position to clipboard"
+	             nouveau slot privé export_clicked()
+
+                 case à cocher m_chkPercentLen "percentage lengths"
+				 pour export des longueurs en % de la course
+
+    Hexapod :	ajout objets GLamText pour numérotation des vérins
+
+        15/10/2021
+
+    MainWindow : ajout commande Up pour déploiement max. des vérins
+	FlightSimMockup : ajout d'une énumération ZPos, remplacement des variables
+	booléennes m_iMode et m_bMode par m_zTop et modif de setPosition() en
+	conséquence
+
+        19/10/2021
+
+    FlightSimMockup::paintOver() : correction affichage de la cinématique
+	changement de cadran des angles + limite à 2 décimales
+
+
+v0.7	24/11/2021
+
+    ajout d'un client Modbus/IP : bpu pour chargement CSV, edtline pour info
+	@IP:port du serveur, bpu Run/Stop
+	possibilité lecture/enregistrement des caractéristiques dimensionnelles :
+	bpu Load model + bpu Save model
+
+        25/11/2021
+
+    modif. classe HexapodData (hexapod.h) pour streaming R/W avec QSettings
+
+        01/12/2021
+
+    refonte IHM : HexapodConfigurator dérive de QGroupBox et intègre les
+	boutons import/export CSV
+	2e groupbox pour les commandes d'animation
+	séparation MGD / MGI
+	ajout indicateurs leds
+
+        03/12/2021
+
+    ajout connexion Modbus server
+	ajout import/export configuration de/vers CSV
+	spinbox rendus non éditable, clavier X1 x10 utilisable
+
+    ajout remote control par lecture datas sur serveur Modbus
+	FlightSimMockup::animateObjects() : émission d'un signal période 2à ms
+	MainWindow::getRemoteMgi() : slot de lecture MGI
+	période de lecture configurable de 20 à 200 ms
+
+    ajout maxTranslation pour limiter Tx,Ty,Tz
+
+        06/12/2021
+
+    MainWindow::getRemoteMgi() : code d'écriture sur le serveur pour tester les
+	performances de l'animation 3D...
+
+    MainWindow::MainWindow() : modif scene pour vue de profil par défaut
+
+        07/12/2021
+
+    nouveau slot resetScene() <-- nouveau signal GLamWidgetUi::resetPressed()
+
+v0.8	19/01/2022
+
+    mise à jour Qt 6.2.2

@@ -1,0 +1,10 @@
+<RCC>
+    <qresource>
+        <file alias="CY600-stl.stl">ressource/CY600.stl</file>
+        <file alias="CY610-stl.stl">ressource/CY610.stl</file>
+        <file alias="CY620-stl.stl">ressource/CY620.stl</file>
+        <file alias="Manche-stl.stl">ressource/Manche.stl</file>
+        <file alias="photo-img.jpg">ressource/photo.jpg</file>
+        <file alias="photo2-img.jpg">ressource/photo2.jpg</file>
+	</qresource>
+</RCC>

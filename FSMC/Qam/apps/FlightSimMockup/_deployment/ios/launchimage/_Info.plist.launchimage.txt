@@ -1,0 +1,24 @@
+<key>UILaunchImages</key>
+<array>
+	<dict>
+		<key>UILaunchImageMinimumOSVersion</key>	<string>7.0</string>
+		<key>UILaunchImageName</key>				<string>LaunchImage-Portrait</string>
+		<key>UILaunchImageOrientation</key>			<string>Portrait</string>
+		<key>UILaunchImageSize</key>				<string>{640, 1136}</string>
+	</dict>
+</array>
+<key>UILaunchImages~ipad</key>
+<array>
+	<dict>
+		<key>UILaunchImageMinimumOSVersion</key>	<string>7.0</string>
+		<key>UILaunchImageName</key>				<string>LaunchImage-Portrait</string>
+		<key>UILaunchImageOrientation</key>			<string>Portrait</string>
+		<key>UILaunchImageSize</key>				<string>{640, 1136}</string>
+	</dict>
+	<dict>
+		<key>UILaunchImageMinimumOSVersion</key>	<string>7.0</string>
+		<key>UILaunchImageName</key>				<string>LaunchImage-Landscape</string>
+		<key>UILaunchImageOrientation</key>			<string>Portrait</string>
+		<key>UILaunchImageSize</key>				<string>{640, 1136}</string>
+	</dict>
+</array>
