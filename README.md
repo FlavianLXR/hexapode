@@ -11,13 +11,13 @@ __Problématique :__
 *Mettre en place le 3ème aspect sur un simulateur d'hélicoptère, la sensation de mouvement, à l'aide d'un hexapode (6 vérins sous le siège).*
 
 # Etudiants
-Killian LOPES\
-Flavian LAXENAIRE (Chef d'équipe)\
-Aurélien FERREIRA \
-Yohann RAIMBAULT 
+Killian\
+Flavian (Chef d'équipe)\
+Aurélien \
+Yohann 
 
 # Tâches
-*Killian LOPES*  
+*Killian*  
 __FlightSimMotionControl - assurer la récupération des informations
 de la cinématique de l’aéronef :__  
 * étudier le protocole de dialogue UDP utilisé par X-Plane ;  
@@ -26,7 +26,7 @@ de la cinématique de l’aéronef :__
 * proposer une IHM minimale pour l’application ;  
 * intégration globale, tests et documentation technique.  
 
-*Flavian LAXENAIRE*  
+*Flavian*  
 __FlightSimMotionControl - mettre un place un serveur Modbus/IP :__  
 * étudier le protocole d’échange à implanter (Modbus/IP) ;  
 * définir la cartographie Modbus requise ;  
@@ -36,7 +36,7 @@ __FlightSimMotionControl - mettre un place un serveur Modbus/IP :__
 * implémenter le MGI ;  
 * tests et documentation technique.  
 
-*Aurélien FERREIRA*  
+*Aurélien*  
 __Hexapode - compléter le programme Matlab/Simulink afin de
 récupérer les informations instantanées de longueur des vérins
 maintenues par le serveur Modbus :__  
@@ -46,7 +46,7 @@ schémas-blocs Simulink ;
 * développer une solution viable (pour au moins un vérin) ;  
 * intégration globale, tests et documentation technique.  
 
-*Yohann RAIMBAULT*  
+*Yohann*  
 __FlightSimMockup : Compléter le modèle 3D de la maquette afin de
 visualiser les éléments du poste de pilotage (à minima siège et
 console d’instruments) et éventuellement le pilote :__  
